@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallpappers/screens/home.dart';
+import 'package:wallpappers/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Wallpapers',
-        home: HomePage(),
+        home: HomeScreen(),
         theme: ThemeData(
           brightness: Brightness.dark,
           scaffoldBackgroundColor: Colors.black,
