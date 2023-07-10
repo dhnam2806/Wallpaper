@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
 
 import '../bloc/wallpapers_bloc.dart';
 import '../models/photo_model.dart';
@@ -16,6 +18,19 @@ class PhotoDetails extends StatefulWidget {
 
 class _PhotoDetailsState extends State<PhotoDetails> {
   final WallpapersBloc _wallpapersBloc = WallpapersBloc();
+
+  Future<void> setWallpaper() async {
+    int location = WallpaperManager.HOME_SCREEN;
+    final file = await DefaultCacheManager().getSingleFile(widget.photo.src!.large2x!);
+
+    try {
+      final bool result =
+          await WallpaperManager.setWallpaperFromFile(file.path, location);
+      print(result);
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +83,7 @@ class _PhotoDetailsState extends State<PhotoDetails> {
                   backgroundColor: Colors.black,
                 ),
                 onPressed: () {
+                  setWallpaper();
                 },
                 child: Text("Set Wallpaper", style: TextStyle(fontSize: 16)),
               ),

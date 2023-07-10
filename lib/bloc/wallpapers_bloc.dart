@@ -14,7 +14,9 @@ class WallpapersBloc extends Bloc<WallpapersEvent, WallpapersState> {
     on<FetchWallpapers>(fetchWallpapers);
     on<SearchWallpapers>(searchWallpapers);
     on<WallpaperClickedEvent>(wallpaperClickedEvent);
-    on<WallpaperDownloadedEvent>(wallpaperDownloadedEvent);
+    // on<WallpaperDownloadedEvent>(wallpaperDownloadedEvent);
+    on<WallpaperLoadedMoreButtonClickedEvent>(
+        wallpaperLoadedMoreButtonClickedEvent);
   }
 
   FutureOr<void> fetchWallpapers(
@@ -45,13 +47,21 @@ class WallpapersBloc extends Bloc<WallpapersEvent, WallpapersState> {
     emit(WallpaperClickedState(photo: event.photo));
   }
 
-  FutureOr<void> wallpaperDownloadedEvent(
-      WallpaperDownloadedEvent event, Emitter<WallpapersState> emit) async {
-    try {
-      // await WallpaperRepository().downloadImage(event.url);
-      emit(WallpaperAppliedSuccess());
-    } catch (e) {
-      emit(WallpaperAppliedError());
-    }
+  // FutureOr<void> wallpaperDownloadedEvent(
+  //     WallpaperDownloadedEvent event, Emitter<WallpapersState> emit) async {
+  //   try {
+  //     // await WallpaperRepository().downloadImage(event.url);
+  //     emit(WallpaperAppliedSuccess());
+  //   } catch (e) {
+  //     emit(WallpaperAppliedError());
+  //   }
+  // }
+
+  FutureOr<void> wallpaperLoadedMoreButtonClickedEvent(
+      WallpaperLoadedMoreButtonClickedEvent event,
+      Emitter<WallpapersState> emit) async {
+    List<Photos> loadMore =
+        await WallpaperRepository().loadMoreWallpapers(event.page);
+    emit(WallpaperLoadedMoreButtonClickedState(wallpapers: loadMore));
   }
 }

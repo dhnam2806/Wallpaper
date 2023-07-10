@@ -25,6 +25,13 @@ class WallpaperAppliedEvent extends WallpapersEvent {
   WallpaperAppliedEvent({required this.url});
 }
 
+class WallpaperLoadedMoreButtonClickedEvent extends WallpapersEvent {
+  final int page ;
+
+  WallpaperLoadedMoreButtonClickedEvent({required this.page});
+
+}
+
 class WallpaperDownloadedEvent extends WallpapersEvent {
   final String url;
 

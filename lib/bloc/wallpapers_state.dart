@@ -22,6 +22,12 @@ class WallpapersError extends WallpapersState {
   WallpapersError({required this.message});
 }
 
+class WallpaperLoadedMoreButtonClickedState extends WallpapersState {
+  final List<Photos> wallpapers;
+
+  WallpaperLoadedMoreButtonClickedState({required this.wallpapers});
+}
+
 class WallpaperAppliedSuccess extends WallpapersState {}
 
 class WallpaperAppliedError extends WallpapersState {}

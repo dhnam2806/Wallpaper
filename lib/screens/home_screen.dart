@@ -17,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final WallpapersBloc _wallpapersBloc = WallpapersBloc();
   TextEditingController _controller = TextEditingController();
+  int page = 1;
 
   @override
   void initState() {
@@ -119,8 +120,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            _wallpapersBloc.add(
-                                WallpaperClickedEvent(photo: wallpapers[index]));
+                            _wallpapersBloc.add(WallpaperClickedEvent(
+                                photo: wallpapers[index]));
                           },
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12.0),
