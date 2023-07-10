@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wallpappers/screens/photo_details.dart';
 
 import '../bloc/wallpapers_bloc.dart';
 import '../models/photo_model.dart';
@@ -78,8 +79,16 @@ class _HomeScreenState extends State<HomeScreen> {
           BlocConsumer<WallpapersBloc, WallpapersState>(
             bloc: _wallpapersBloc,
             listener: (context, state) {
-              // TODO: implement listener
+              if (state is WallpaperClickedState) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            PhotoDetails(photo: state.photo)));
+              }
             },
+            listenWhen: (previous, current) => current is WallpapersActionState,
+            buildWhen: (previous, current) => current is! WallpapersActionState,
             builder: (context, state) {
               switch (state.runtimeType) {
                 case WallpapersLoading:
@@ -108,11 +117,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisSpacing: 12,
                       crossAxisSpacing: 12,
                       itemBuilder: (context, index) {
-                        return ClipRRect(
-                          borderRadius: BorderRadius.circular(12.0),
-                          child: Image.network(
-                            wallpapers[index].src!.portrait!,
-                            fit: BoxFit.cover,
+                        return GestureDetector(
+                          onTap: () {
+                            _wallpapersBloc.add(
+                                WallpaperClickedEvent(photo: wallpapers[index]));
+                          },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12.0),
+                            child: Image.network(
+                              wallpapers[index].src!.portrait!,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         );
                       },

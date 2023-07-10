@@ -1,3 +1,4 @@
+
 part of 'wallpapers_bloc.dart';
 
 @immutable
@@ -23,6 +24,18 @@ class WallpapersError extends WallpapersState {
 
 class WallpaperAppliedSuccess extends WallpapersState {}
 
-class WallpaperAppliedError extends WallpapersState {
+class WallpaperAppliedError extends WallpapersState {}
 
+class WallpaperClickedState extends WallpapersActionState {
+  final Photos photo;
+  WallpaperClickedState({
+    required this.photo,
+  });
+}
+
+class WallpaperAppliedState extends WallpapersActionState {
+  final String url;
+  WallpaperAppliedState({
+    required this.url,
+  });
 }

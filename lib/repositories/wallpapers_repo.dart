@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:wallpappers/models/photo_model.dart';
+import '../models/photo_model.dart';
+
 
 class WallpaperRepository {
   static final _apiKey =
@@ -48,4 +49,21 @@ class WallpaperRepository {
       throw Exception('Failed to load wallpapers');
     }
   }
+
+  // Future<String> downloadImage(String imageUrl) async {
+  //   final response = await http.get(Uri.parse(imageUrl));
+
+  //   if (response.statusCode == 200) {
+  //     final directory = await getApplicationDocumentsDirectory();
+  //     final fileName = basename(imageUrl);
+  //     final filePath = '${directory.path}/$fileName';
+
+  //     final file = File(filePath);
+  //     await file.writeAsBytes(response.bodyBytes);
+
+  //     return filePath;
+  //   } else {
+  //     throw Exception('Failed to download image');
+  //   }
+  // }
 }
