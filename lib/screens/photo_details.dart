@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
-
+import 'package:gallery_saver/gallery_saver.dart';
 import '../bloc/wallpapers_bloc.dart';
 import '../models/photo_model.dart';
 
@@ -20,8 +20,9 @@ class _PhotoDetailsState extends State<PhotoDetails> {
   final WallpapersBloc _wallpapersBloc = WallpapersBloc();
 
   Future<void> setWallpaper() async {
-    int location = WallpaperManager.HOME_SCREEN;
-    final file = await DefaultCacheManager().getSingleFile(widget.photo.src!.large2x!);
+    int location = WallpaperManager.LOCK_SCREEN;
+    final file =
+        await DefaultCacheManager().getSingleFile(widget.photo.src!.portrait!);
 
     try {
       final bool result =
@@ -30,6 +31,15 @@ class _PhotoDetailsState extends State<PhotoDetails> {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<void> downloadImage() async {
+    String path = widget.photo.src!.portrait!;
+    GallerySaver.saveImage(path).then((bool? success) {
+      setState(() {
+        print('Image is saved');
+      });
+    });
   }
 
   @override
@@ -92,7 +102,9 @@ class _PhotoDetailsState extends State<PhotoDetails> {
                   minimumSize: Size(170, 48),
                   backgroundColor: Colors.black,
                 ),
-                onPressed: () async {
+                onPressed: () {
+                  // _saveImage(context);
+                  downloadImage();
                 },
                 child:
                     Text("Download Wallpaper", style: TextStyle(fontSize: 16)),

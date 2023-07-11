@@ -42,6 +42,7 @@ dependencies:
   google_fonts: ^4.0.4
   flutter_wallpaper_manager: ^0.0.4
   flutter_cache_manager: 
+  gallery_saver: ^2.3.2
 
 dev_dependencies:
   flutter_test:
