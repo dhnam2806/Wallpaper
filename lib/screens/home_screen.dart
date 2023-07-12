@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:wallpappers/screens/photo_details.dart';
-
 import '../bloc/wallpapers_bloc.dart';
 import '../models/photo_model.dart';
+import 'photo_details.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -3,9 +3,7 @@ part of 'wallpapers_bloc.dart';
 @immutable
 abstract class WallpapersEvent {}
 
-class FetchWallpapers extends WallpapersEvent {
-
-}
+class FetchWallpapers extends WallpapersEvent {}
 
 class SearchWallpapers extends WallpapersEvent {
   final String query;
@@ -25,15 +23,14 @@ class WallpaperAppliedEvent extends WallpapersEvent {
   WallpaperAppliedEvent({required this.url});
 }
 
-class WallpaperLoadedMoreButtonClickedEvent extends WallpapersEvent {
-  final int page ;
-
-  WallpaperLoadedMoreButtonClickedEvent({required this.page});
-
-}
-
 class WallpaperDownloadedEvent extends WallpapersEvent {
   final String url;
 
   WallpaperDownloadedEvent({required this.url});
+}
+
+class AsyncWallpaperEvent extends WallpapersEvent {
+  final String url;
+
+  AsyncWallpaperEvent({required this.url});
 }

@@ -28,27 +28,6 @@ class WallpaperRepository {
     }
   }
 
-  Future<List<Photos>> loadMoreWallpapers(int page) async {
-    List<Photos> wallpapers = [];
-    final response = await http.get(
-      Uri.parse('$_baseUrl/curated?per_page=80&page=${page}'),
-      headers: {
-        'Authorization': _apiKey,
-      },
-    );
-
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      List photos = data['photos'];
-      for (int i = 0; i < photos.length; i++) {
-        wallpapers.add(Photos.fromJson(photos[i]));
-      }
-      return wallpapers;
-    } else {
-      throw Exception('Failed to load wallpapers');
-    }
-  }
-
   Future<List<Photos>> searchWallpapers(String query) async {
     List<Photos> wallpapers = [];
     final response = await http.get(

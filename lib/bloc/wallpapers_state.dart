@@ -1,4 +1,3 @@
-
 part of 'wallpapers_bloc.dart';
 
 @immutable
@@ -22,15 +21,9 @@ class WallpapersError extends WallpapersState {
   WallpapersError({required this.message});
 }
 
-class WallpaperLoadedMoreButtonClickedState extends WallpapersState {
-  final List<Photos> wallpapers;
-
-  WallpaperLoadedMoreButtonClickedState({required this.wallpapers});
+class WallpaperAppliedSuccess extends WallpapersActionState {
 }
 
-class WallpaperAppliedSuccess extends WallpapersState {}
-
-class WallpaperAppliedError extends WallpapersState {}
 
 class WallpaperClickedState extends WallpapersActionState {
   final Photos photo;
@@ -39,9 +32,8 @@ class WallpaperClickedState extends WallpapersActionState {
   });
 }
 
-class WallpaperAppliedState extends WallpapersActionState {
-  final String url;
-  WallpaperAppliedState({
-    required this.url,
-  });
+class WallpaperDownloadedState extends WallpapersActionState {
+
 }
+
+
