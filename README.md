@@ -16,8 +16,13 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 some pictures in the app:
-![Screenshot_1691835235](https://github.com/dhnam2806/Wallpapers/assets/122454760/204b3b5c-2213-4a93-8732-12bbc8d4e2f0)
 
-![Screenshot_1691835304](https://github.com/dhnam2806/Wallpapers/assets/122454760/4846ee99-d850-42bf-bac7-020b4d6b8d55)
+HomeScreen:
+![Screenshot 2023-08-12 172342](https://github.com/dhnam2806/Wallpapers/assets/122454760/666cf66f-7d00-4d36-a0f2-313399bcf09a)
 
-![Screenshot_1691835357](https://github.com/dhnam2806/Wallpapers/assets/122454760/4cee6d9d-4cf0-4ceb-83bf-cf76dacc0e0b)
+Wallpaper preview:
+![Screenshot 2023-08-12 172407](https://github.com/dhnam2806/Wallpapers/assets/122454760/7f405933-8cdb-4a9f-8412-81812f6be57c)
+
+Search:
+![Screenshot 2023-08-12 172509](https://github.com/dhnam2806/Wallpapers/assets/122454760/af6230a3-bed8-4e57-b776-e46438c4675b)
+
