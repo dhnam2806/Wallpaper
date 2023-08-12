@@ -15,13 +15,14 @@ class PhotoDetails extends StatefulWidget {
 
 class _PhotoDetailsState extends State<PhotoDetails> {
   final WallpapersBloc _wallpapersBloc = WallpapersBloc();
-
   @override
   Widget build(BuildContext context) {
+    final safePadding = MediaQuery.of(context).padding.top;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
         body: BlocConsumer<WallpapersBloc, WallpapersState>(
       bloc: _wallpapersBloc,
-      
       listener: (context, state) {
         if (state is WallpaperDownloadedState) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -31,7 +32,7 @@ class _PhotoDetailsState extends State<PhotoDetails> {
             ),
           );
         }
-        if(state is WallpaperAppliedSuccess) {
+        if (state is WallpaperAppliedSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('Wallpaper applied successfully!'),
@@ -47,12 +48,12 @@ class _PhotoDetailsState extends State<PhotoDetails> {
           Image.network(
             widget.photo.src!.large2x!,
             fit: BoxFit.cover,
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
+            height: height,
+            width: width,
           ),
           Positioned(
-            top: 60,
-            left: 8,
+            top: safePadding + 4,
+            left: 4,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(44, 44),
