@@ -72,7 +72,7 @@ class _PhotoDetailsState extends State<PhotoDetails> {
           Align(
             alignment: Alignment.bottomCenter - Alignment(0, 0.1),
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.95,
+              width: width * 0.95,
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.6),
@@ -87,13 +87,12 @@ class _PhotoDetailsState extends State<PhotoDetails> {
                       backgroundColor: Colors.black,
                     ),
                     onPressed: () {
-                      // setWallpaper();
                       _wallpapersBloc.add(AsyncWallpaperEvent(
                         url: widget.photo.src!.portrait!,
                       ));
                     },
                     child:
-                        Text("Set Wallpaper", style: TextStyle(fontSize: 16)),
+                        Text("Set Wallpaper", style: TextStyle(fontSize: 14)),
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -101,13 +100,11 @@ class _PhotoDetailsState extends State<PhotoDetails> {
                       backgroundColor: Colors.black,
                     ),
                     onPressed: () {
-                      // downloadImage();
                       _wallpapersBloc.add(WallpaperDownloadedEvent(
                         url: widget.photo.src!.portrait!,
                       ));
                     },
-                    child: Text("Download Wallpaper",
-                        style: TextStyle(fontSize: 16)),
+                    child: Text("Download", style: TextStyle(fontSize: 14)),
                   ),
                 ],
               ),
